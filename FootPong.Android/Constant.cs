@@ -7,5 +7,6 @@
         public const int BALANCED = 420;
         public const int ATTACKING = 650;
         public const int INCREMENT_SPEED_TIME = 5;
+        public const int START_GAME_DELAY = 1;
     }
 }

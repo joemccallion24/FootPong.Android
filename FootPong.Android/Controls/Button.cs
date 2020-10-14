@@ -7,17 +7,17 @@ namespace FootPong.Android.Controls
 {
     public class Button : Component
     {
-        private TouchLocationState _currentTouch;
         private SpriteFont _font;
         private bool _isHovering;
-        private TouchLocationState _previousTouch;
         private Texture2D _texture;
         private TouchCollection touchCollection;
+        public float timer = 0;
 
         public event EventHandler Click;
         public bool Clicked { get; private set; }
         public Color PenColour { get; set; }
         public Vector2 Position { get; set; }
+
 
         public Rectangle Rectangle
         {
@@ -54,37 +54,26 @@ namespace FootPong.Android.Controls
 
         public override void Update(GameTime gameTime)
         {
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             touchCollection = TouchPanel.GetState();
-
-            foreach (TouchLocation tl in touchCollection)
+            if (touchCollection.Count > 0)
             {
-                _previousTouch = _currentTouch;
+                int touchPosition = ((int)touchCollection[0].Position.Y);
+                int touchX = ((int)touchCollection[0].Position.X);
+                var TouchRectangle = new Rectangle(touchX, touchPosition, _texture.Width, _texture.Height);
 
-                touchCollection = TouchPanel.GetState();
-                if (touchCollection.Count > 0)
+                if (TouchRectangle.Intersects(Rectangle))
                 {
-                    int touchPosition = ((int)touchCollection[0].Position.Y);
-                    int touchX = ((int)touchCollection[0].Position.X);
-
-                    var mouseRectangle = new Rectangle(touchX, touchPosition, 1, 1);
-                    // var mouseRectangle = new Rectangle(_currentMouse.X, _currentMouse.Y, 1, 1);
-
-                    _isHovering = false;
-
-                    if (mouseRectangle.Intersects(Rectangle))
+                    while (timer > 0.2)
                     {
-                        _isHovering = true;
-                        _currentTouch = tl.State;
-
-                        //if (_currentMouse.LeftButton == ButtonState.Released && _previousMouse.LeftButton == ButtonState.Pressed)
-                        if (_currentTouch == TouchLocationState.Released)
-                        {
-                            Click?.Invoke(this, new EventArgs());
-
-                        }
+                        Click.Invoke(this, new EventArgs());
+                        timer = 0;
                     }
                 }
             }
+
+
         }
     }
 }

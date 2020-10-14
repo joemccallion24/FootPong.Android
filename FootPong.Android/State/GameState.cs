@@ -23,7 +23,7 @@ namespace FootPong.Android.State
         private Score score;
         private ScreenText screenFont;
         private int difficultyCase;
-        private float currentYPosition;
+        private float currentYPosition, timer = 0;
         private bool Pause, Multiplayer;
         private Sprite BackgroundImg;
 
@@ -87,7 +87,7 @@ namespace FootPong.Android.State
 
             ball = new Ball(ballTexture)
             {
-                position = new Vector2((screenWidth / 2) - (ballTexture.Width / 2) - 54, (screenHeight / 2) - (ballTexture.Height / 2)), //positions the ball in the centre of the screen
+                position = new Vector2((screenWidth / 2) - (ballTexture.Width / 2), (screenHeight / 2) - (ballTexture.Height / 2) - 54), //positions the ball in the centre of the screen
                 score = score,
             };
 
@@ -119,7 +119,8 @@ namespace FootPong.Android.State
 
         public override void Update(GameTime gameTime)
         {
-            if (!Pause)
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (!Pause && timer > Constant.START_GAME_DELAY)
             {
                 foreach (var sprite in sprites)
                 {
@@ -177,7 +178,7 @@ namespace FootPong.Android.State
             }
 
             score.Draw(_spriteBatch);
-            if (ball.speed < 4 && score.playerScore == 0 && score.AIscore == 0)
+            if (ball.speed < 7 && score.playerScore == 0 && score.AIscore == 0)
             {
                 screenFont.Draw(_spriteBatch); //drawn for the first 5 seconds 
             }
