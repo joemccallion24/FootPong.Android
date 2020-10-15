@@ -87,7 +87,7 @@ namespace FootPong.Android.State
 
             ball = new Ball(ballTexture)
             {
-                position = new Vector2((screenWidth / 2) - (ballTexture.Width / 2), (screenHeight / 2) - (ballTexture.Height / 2) - 54), //positions the ball in the centre of the screen
+                position = new Vector2((screenWidth / 2) - (ballTexture.Width / 2), (screenHeight / 2) - (ballTexture.Height / 2)), //positions the ball in the centre of the screen
                 score = score,
             };
 
@@ -98,7 +98,7 @@ namespace FootPong.Android.State
 
             Player1 = new Player(playerTexture)
             {
-                position = new Vector2(Constant.DEFENSIVE, (screenHeight / 2) - (playerTexture.Height / 2)),
+                position = new Vector2(Game1.screenWidth / 15, (screenHeight / 2) - (playerTexture.Height / 2)),
             };
 
             //load in the sprites
@@ -244,15 +244,15 @@ namespace FootPong.Android.State
             switch (difficultyCase)
             {
                 case 0:
-                    Player1.position.X = Constant.DEFENSIVE;
+                    Player1.position.X = Game1.screenWidth / 15;
                     Player1.position.Y = currentYPosition;
                     break;
                 case 1:
-                    Player1.position.X = Constant.BALANCED;
+                    Player1.position.X = Game1.screenWidth / 100 * 25;
                     Player1.position.Y = currentYPosition;
                     break;
                 case 2:
-                    Player1.position.X = Constant.ATTACKING;
+                    Player1.position.X = Game1.screenWidth / 100 * 45;
                     Player1.position.Y = currentYPosition;
                     break;
             }

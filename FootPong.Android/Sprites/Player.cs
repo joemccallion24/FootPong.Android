@@ -40,7 +40,7 @@ namespace FootPong.Android.Sprites
             }
 
             position += velocity;
-            position.Y = MathHelper.Clamp(position.Y, 0, GameState.screenHeight - _texture.Height - 100);
+            position.Y = MathHelper.Clamp(position.Y, 0, GameState.screenHeight - _texture.Height);
 
             velocity = Vector2.Zero;
         }

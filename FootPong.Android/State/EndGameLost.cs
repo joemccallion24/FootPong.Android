@@ -20,7 +20,7 @@ namespace FootPong.Android.State
 
             var RestartGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2 - 20, 450),
+                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, Game1.screenHeight / 2 - Game1.screenHeight / 10),
                 Text = "Try Again",
             };
 
@@ -28,7 +28,7 @@ namespace FootPong.Android.State
 
             var MenuGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2 - 20, 600),
+                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, Game1.screenHeight / 2 + Game1.screenHeight / 14),
                 Text = "Main Menu",
             };
 
@@ -36,7 +36,7 @@ namespace FootPong.Android.State
 
             var quitGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2 - 20, 750),
+                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, Game1.screenHeight / 2 + Game1.screenHeight / 4),
                 Text = "Quit Game",
             };
 

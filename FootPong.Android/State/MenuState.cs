@@ -23,7 +23,7 @@ namespace FootPong.Android.State
 
             var newGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, 450),
+                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, Game1.screenHeight / 2 - Game1.screenHeight / 10),
                 Text = "Play Game",
             };
 
@@ -31,7 +31,7 @@ namespace FootPong.Android.State
 
             var quitGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, 600),
+                Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2, Game1.screenHeight / 2 + Game1.screenHeight / 10),
                 Text = "Quit Game",
             };
 
