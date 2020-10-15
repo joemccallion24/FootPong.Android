@@ -42,17 +42,17 @@ namespace FootPong.Android.State
         newGameButton,
         quitGameButton,
       };
-            sprites = new List<Sprite>()
-            {
-             new Sprite(_content.Load<Texture2D>("MenuBackground")),
-        };
+
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
+            spriteBatch.Draw(_content.Load<Texture2D>("MenuBackground"),
+                new Rectangle(0, 0, Game1.screenWidth, Game1.screenHeight),
+                new Rectangle(0, 0, 2020, 1080),
+                Color.White);
 
-            foreach (var sprite in sprites) sprite.Draw(spriteBatch);
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);

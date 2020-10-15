@@ -33,10 +33,10 @@ namespace FootPong.Android
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            //screenWidth = _graphics.PreferredBackBufferWidth;
-            //screenHeight = _graphics.PreferredBackBufferHeight;
-            screenWidth = 2020;
-            screenHeight = 1080;
+            screenWidth = _graphics.GraphicsDevice.Viewport.Width;
+            screenHeight = _graphics.GraphicsDevice.Viewport.Height;
+            //screenWidth = 2020;
+            //screenHeight = 1080;
             random = new Random();
             IsMouseVisible = true;
             base.Initialize();

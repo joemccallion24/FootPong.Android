@@ -48,10 +48,7 @@ namespace FootPong.Android.State
         MenuGameButton,
         quitGameButton,
       };
-            sprites = new List<Sprite>()
-            {
-             new Sprite(_content.Load<Texture2D>("MenuBackgroundLost")),
-        };
+
 
         }
 
@@ -59,7 +56,11 @@ namespace FootPong.Android.State
         {
             spriteBatch.Begin();
 
-            foreach (var sprite in sprites) sprite.Draw(spriteBatch);
+            spriteBatch.Draw(_content.Load<Texture2D>("MenuBackgroundLost"),
+                new Rectangle(0, 0, Game1.screenWidth, Game1.screenHeight),
+                new Rectangle(0, 0, 2020, 980),
+                Color.White);
+
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);

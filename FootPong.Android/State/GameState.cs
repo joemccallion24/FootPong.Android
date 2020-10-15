@@ -25,7 +25,7 @@ namespace FootPong.Android.State
         private int difficultyCase;
         private float currentYPosition, timer = 0;
         private bool Pause, Multiplayer;
-        private Sprite BackgroundImg;
+
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
         : base(game, graphicsDevice, content)
@@ -47,28 +47,28 @@ namespace FootPong.Android.State
 
             var HomeButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(60, 900),
+                Position = new Vector2(Game1.screenWidth / 20, screenHeight - screenHeight / 10),
                 Text = "",
             };
             HomeButton.Click += HomeButton_Click;
 
             var PauseButton = new Button(pausebuttonTexture, buttonFont)
             {
-                Position = new Vector2(screenWidth / 2, 900),
+                Position = new Vector2(screenWidth / 2, screenHeight - screenHeight / 20),
                 Text = "",
             };
             PauseButton.Click += PauseButton_Click;
 
             var DifficultyButton = new Button(DifficultybuttonTexture, DifficultybuttonFont)
             {
-                Position = new Vector2(255, 900),
+                Position = new Vector2(Game1.screenWidth / 8, screenHeight - screenHeight / 10),
                 Text = "Play Style",
             };
             DifficultyButton.Click += DifficultyButton_Click;
 
             var MultiplayerButton = new Button(DifficultybuttonTexture, DifficultybuttonFont)
             {
-                Position = new Vector2(1450, 900),
+                Position = new Vector2((Game1.screenWidth / 4) * 3, screenHeight - screenHeight / 10),
                 Text = "Player 2",
             };
             MultiplayerButton.Click += MultiplayerButton_Click;
@@ -93,7 +93,7 @@ namespace FootPong.Android.State
 
             AIplayer = new AIPlayer(player2Texture)
             {
-                position = new Vector2(1830, (screenHeight / 2) - (playerTexture.Height / 2)),
+                position = new Vector2(Game1.screenWidth - (Game1.screenWidth / 10), (screenHeight / 2) - (playerTexture.Height / 2)),
             };
 
             Player1 = new Player(playerTexture)
@@ -101,13 +101,9 @@ namespace FootPong.Android.State
                 position = new Vector2(Constant.DEFENSIVE, (screenHeight / 2) - (playerTexture.Height / 2)),
             };
 
-
-            BackgroundImg = new Sprite(_content.Load<Texture2D>("background"));
-
             //load in the sprites
             sprites = new List<Sprite>()
         {
-            BackgroundImg,
             ball,
             Player1,
             AIplayer,
@@ -163,6 +159,11 @@ namespace FootPong.Android.State
             _graphicsDevice.Clear(Color.Green);
 
             _spriteBatch.Begin();
+
+            _spriteBatch.Draw(_content.Load<Texture2D>("background"),
+                new Rectangle(0, 0, Game1.screenWidth, Game1.screenHeight),
+                new Rectangle(0, 0, 2020, 980),
+                Color.White);
 
             foreach (var sprite in sprites) sprite.Draw(_spriteBatch);
             if (!Pause)

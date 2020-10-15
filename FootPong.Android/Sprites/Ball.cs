@@ -30,11 +30,6 @@ namespace FootPong.Android.Sprites
                 restart();
             }
 
-            //MouseState state = Mouse.GetState();
-            //foreach (TouchLocation tl in touchCollection)
-            //{
-            //    if (TouchLocationState.Pressed == tl.State) isPlaying = true;
-            //}
             if (!isPlaying) return;
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -45,7 +40,7 @@ namespace FootPong.Android.Sprites
             }
 
             //keeping the ball on the screen my bouncing off top and bottom
-            if (position.Y <= 0 || position.Y + _texture.Height >= GameState.screenHeight - 100) velocity.Y = -velocity.Y;
+            if (position.Y <= 0 || position.Y + _texture.Height >= GameState.screenHeight) velocity.Y = -velocity.Y;
 
             //if the ball goes left or right the appropriate score increments
             if (position.X <= 0)

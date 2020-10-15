@@ -21,7 +21,7 @@ namespace FootPong.Android.State
             var RestartGameButton = new Button(buttonTexture, buttonFont)
             {
                 Position = new Vector2(Game1.screenWidth / 2 - buttonTexture.Width / 2 - 20, 450),
-                Text = "Beat Him Again",
+                Text = "Play Again",
             };
 
             RestartGameButton.Click += RestartGameButton_Click;
@@ -48,10 +48,6 @@ namespace FootPong.Android.State
         MenuGameButton,
         quitGameButton,
       };
-            sprites = new List<Sprite>()
-            {
-             new Sprite(_content.Load<Texture2D>("MenuBackgroundWin")),
-        };
 
         }
 
@@ -59,7 +55,11 @@ namespace FootPong.Android.State
         {
             spriteBatch.Begin();
 
-            foreach (var sprite in sprites) sprite.Draw(spriteBatch);
+            spriteBatch.Draw(_content.Load<Texture2D>("MenuBackgroundWin"),
+                new Rectangle(0, 0, Game1.screenWidth, Game1.screenHeight),
+                new Rectangle(0, 0, 2020, 980),
+                Color.White);
+
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);

@@ -39,6 +39,8 @@ namespace FootPong.Android.Sprites
             spriteBatch.Draw(_texture, position, Color.White);
         }
 
+
+
         //the following is the code for collisions
         protected bool IsTouchingTop(Sprite sprite)
         {
